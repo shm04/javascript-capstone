@@ -5,6 +5,6 @@ const header = `
 <h3>Fiction</h3>
 <h3>Educative</h3> 
 
-`
+`;
 
-export default header
+export default header;
