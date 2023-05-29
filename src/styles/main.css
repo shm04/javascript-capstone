@@ -11,5 +11,8 @@ body {
 header{
    margin-top: 2rem;
     display: flex;
-    gap: 2rem;
+    gap: 5rem;
+}
+#count-books{
+    text-decoration: underline;
 }
