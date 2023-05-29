@@ -16,6 +16,6 @@ const footer = `
 <div class="footer-grey" >
 
 </div>
-`
+`;
 
-export {header, footer};
+export { header, footer };

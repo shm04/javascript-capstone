@@ -25,20 +25,21 @@ header {
   height: 4rem;
   border-radius: 50%;
 }
-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-footer p{
-    
-    height: 5rem;
-    border: solid 2px;
-    padding: 2.5rem;
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
-.footer-grey{
-    height: 2rem;
-    width: 100%;
-    background-color: rgb(145, 140, 140);
+footer p {
+  height: 5rem;
+  border: solid 2px;
+  padding: 2.5rem;
+}
+
+.footer-grey {
+  height: 2rem;
+  width: 100%;
+  background-color: rgb(145, 140, 140);
 }
