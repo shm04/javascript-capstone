@@ -9,4 +9,13 @@ const header = `
 
 `;
 
-export default header;
+const footer = `
+
+<p>Created by Microverse students: Sebastian and Sylvester under CC license</p>
+
+<div class="footer-grey" >
+
+</div>
+`
+
+export {header, footer};
