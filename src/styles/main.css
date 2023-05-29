@@ -4,15 +4,23 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     margin: auto;
     padding: 0 4rem;
 }
-header{
+
+header {
    margin-top: 2rem;
     display: flex;
+    align-items: center;
     gap: 5rem;
 }
-#count-books{
+
+#count-books {
     text-decoration: underline;
+}
+
+.logo {
+    height: 50px;
 }
