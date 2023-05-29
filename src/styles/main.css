@@ -5,9 +5,11 @@
     box-sizing: border-box;
 }
 body {
-    background-color: bisque;
     margin: auto;
+    padding: 0 4rem;
 }
 header{
-    margin: 4rem;
+   margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
 }
