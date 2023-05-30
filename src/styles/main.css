@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  margin: 4rem;
+  padding: 2rem 4rem;
   display: flex;
   align-items: center;
   gap: 5rem;
@@ -34,12 +34,8 @@ footer {
 
 footer p {
   height: 5rem;
-  border: solid 2px;
-  padding: 2.5rem;
-}
-
-.footer-grey {
-  height: 2rem;
-  width: 100%;
-  background-color: rgb(145, 140, 140);
+  border-top: solid 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 25px;
 }
