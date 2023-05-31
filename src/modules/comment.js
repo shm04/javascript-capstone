@@ -90,10 +90,12 @@ commentContainer.appendChild(FormContainer)
 bookDiv.appendChild(commentContainer)
 commentSection.appendChild(bookDiv);
 const blur = document.createElement("div")
+blur.className = "blur"
 document.body.appendChild(commentSection)
-
+document.body.appendChild(blur)
 close.addEventListener("click", ()=>{
     commentSection.style.display = "none"
+    blur.classList.remove("blur")
 })
     });
     return data;
