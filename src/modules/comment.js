@@ -4,6 +4,7 @@ const commentPop = async() => {
     const data = await response.json();
 
     const commentSection = document.createElement('div');
+    commentSection.className = "comment"
     
 console.log(data.entries)
     data.entries.forEach((entry) => {
@@ -23,7 +24,12 @@ console.log(data.entries)
       bookCover.src = `https://covers.openlibrary.org/b/id/${firstCover}.jpg`;
 
       bookDiv.appendChild(bookCover);
-
+      const detail = document.createElement("div")
+      detail.className = "detail"
+      const left = document.createElement("div")
+      const right = document.createElement("div")
+      left.className = "left"
+      right.className = "right"
       const bookTitle = document.createElement('p');
       const subject = document.createElement('p');
       const create = document.createElement('p');
@@ -31,15 +37,18 @@ console.log(data.entries)
       const revision = document.createElement('p');
       bookTitle.className = 'book-title';
       bookTitle.textContent = title;
-      subject.textContent = subjects[0]
-      create.textContent = created.value
-      modified.textContent = last_modified.value
-      revision.textContent = latest_revision
+      subject.textContent = "Subject: " + subjects[0]
+      create.textContent = "Created: " + created.value
+      modified.textContent = "Modified: " + last_modified.value
+      revision.textContent = "Revision: " + latest_revision
       bookDiv.appendChild(bookTitle);
-      bookDiv.appendChild(subject);
-      bookDiv.appendChild(revision);
-      bookDiv.appendChild(create);
-      bookDiv.appendChild(modified);
+      left.appendChild(subject);
+      left.appendChild(revision);
+      right.appendChild(create);
+      right.appendChild(modified);
+      detail.appendChild(left)
+      detail.appendChild(right)
+      bookDiv.appendChild(detail);
       
       commentSection.appendChild(bookDiv);
 

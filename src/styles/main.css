@@ -67,3 +67,20 @@ footer p {
   align-items: center;
   padding-left: 25px;
 }
+.comment .book-div{
+  max-width: 90%;
+ 
+}
+.detail{
+  display: flex;
+  gap: 4rem;
+  margin: 2rem 0;
+}
+.comment .book-cover{
+  width: 90%;
+  height: auto;
+ 
+}
+.left p, .right p{
+  margin-top: 1rem;
+}
