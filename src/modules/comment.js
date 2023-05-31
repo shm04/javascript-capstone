@@ -1,4 +1,4 @@
-const commentPop = async() => {
+const commentPop = async(id) => {
     try {
     const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json?limit=22');
     const data = await response.json();
@@ -11,7 +11,7 @@ console.log(data.entries)
       
       const { title, covers, key, subjects, created, last_modified, latest_revision} = entry;
 
-      if (!covers || covers.length === 0 || key !=="/works/OL82537W" ) {
+      if (!covers || covers.length === 0 || key !== id ) {
         return;
       }
 
@@ -48,18 +48,16 @@ console.log(data.entries)
       right.appendChild(modified);
       detail.appendChild(left)
       detail.appendChild(right)
-      bookDiv.appendChild(detail);
-      
+      bookDiv.appendChild(detail);      
       commentSection.appendChild(bookDiv);
-
       document.body.appendChild(commentSection)
-
-
     });
     return data;
   } catch (error) {
     return error;
   }
 }
+
+
 
 export default commentPop

@@ -1,3 +1,4 @@
+import commentPop from "./comment.js";
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=22';
 
 const displayBook = async () => {
@@ -8,7 +9,7 @@ const displayBook = async () => {
     const mainSection = document.querySelector('.main-section');
 
     data.entries.forEach((entry) => {
-      const { title, covers } = entry;
+      const { title, covers, key } = entry;
 
       if (!covers || covers.length === 0) {
         return;
@@ -36,6 +37,9 @@ const displayBook = async () => {
       commentBtn.textContent = 'Comments';
 
       bookDiv.appendChild(commentBtn);
+      commentBtn.addEventListener("click", () =>{
+        commentPop(key)
+      })
     });
     return data;
   } catch (error) {
