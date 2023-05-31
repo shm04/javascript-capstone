@@ -103,3 +103,31 @@ input{
   width: 100%;
   justify-content: center;
 }
+.comment{
+
+  left: 5rem;
+  right: 5rem;
+  top: 1rem;
+  bottom: 1rem;
+  padding: 2rem;
+  position: fixed;
+  transition: 200ms ease-in-out;
+  border: 1px solid #ebecf0;
+  border-radius: 10px;
+  z-index: 50;
+  background-color: white;
+  width: 90vw;
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.blur{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: 200ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+}
