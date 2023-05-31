@@ -1,4 +1,4 @@
-const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=9';
+const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=22';
 
 const displayBook = async () => {
   try {
