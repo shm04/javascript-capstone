@@ -1,6 +1,6 @@
 const commentPop = async(id) => {
     try {
-    const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json?limit=22');
+    const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json');
     const data = await response.json();
 
     const commentSection = document.createElement('div');
@@ -9,15 +9,15 @@ const commentPop = async(id) => {
 console.log(data.entries)
     data.entries.forEach((entry) => {
       
-      const { title, covers, key, subjects, created, last_modified, latest_revision} = entry;
+        // const { title, covers, key, subjects, created, last_modified, latest_revision} = entry;
+        const { title, covers, key} = entry;
 
-      if (!covers || covers.length === 0 || key !== id ) {
+      if (key != id) {
         return;
       }
-
+    
       const bookDiv = document.createElement('div');
       bookDiv.className = 'book-div';
-
       const firstCover = covers[0];
       const bookCover = document.createElement('img');
       bookCover.className = 'book-cover';
@@ -30,6 +30,7 @@ console.log(data.entries)
       const right = document.createElement("div")
       left.className = "left"
       right.className = "right"
+      
       const bookTitle = document.createElement('p');
       const subject = document.createElement('p');
       const create = document.createElement('p');
@@ -37,10 +38,10 @@ console.log(data.entries)
       const revision = document.createElement('p');
       bookTitle.className = 'book-title';
       bookTitle.textContent = title;
-      subject.textContent = "Subject: " + subjects[0]
-      create.textContent = "Created: " + created.value
-      modified.textContent = "Modified: " + last_modified.value
-      revision.textContent = "Revision: " + latest_revision
+      subject.textContent = "Subject: " + title
+      create.textContent = "Created: " + title
+      modified.textContent = "Modified: " + title
+      revision.textContent = "Revision: " + title
       bookDiv.appendChild(bookTitle);
       left.appendChild(subject);
       left.appendChild(revision);

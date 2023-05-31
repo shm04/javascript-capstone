@@ -1,5 +1,5 @@
 import commentPop from "./comment.js";
-const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?key=22';
+const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
 
 const displayBook = async () => {
   try {
@@ -47,5 +47,5 @@ const displayBook = async () => {
     return error;
   }
 };
-
+// const bookId = key.replace("/works/", '')
 export default displayBook;

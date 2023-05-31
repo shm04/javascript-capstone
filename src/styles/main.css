@@ -84,3 +84,11 @@ footer p {
 .left p, .right p{
   margin-top: 1rem;
 }
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+input{
+  height: 1rem;
+}
