@@ -49,8 +49,39 @@ console.log(data.entries)
       detail.appendChild(left)
       detail.appendChild(right)
       bookDiv.appendChild(detail);      
-      commentSection.appendChild(bookDiv);
-      document.body.appendChild(commentSection)
+
+
+
+const commentContainer = document.createElement("div")
+const FormContainer = document.createElement("div")
+const commentHeading = document.createElement("h2")
+commentHeading.textContent = "Comments (2)"
+const formHeading = document.createElement("h2")
+formHeading.textContent = "Add comment"
+const form = document.createElement("form")
+const nameInput = document.createElement("input")
+nameInput.type = "text"
+nameInput.name = "name"
+nameInput.placeholder = "Your name"
+const textInput = document.createElement("input")
+textInput.type = "textarea"
+textInput.name = "texte"
+textInput.placeholder = "Your Insights"
+const formBtn = document.createElement("button")
+formBtn.type = "submit"
+formBtn.textContent = "Comment"
+form.appendChild(formHeading)
+form.appendChild(nameInput)
+form.appendChild(textInput)
+form.appendChild(formBtn)
+commentContainer.appendChild(commentHeading)
+
+FormContainer.appendChild(form)
+commentContainer.appendChild(FormContainer)
+
+bookDiv.appendChild(commentContainer)
+commentSection.appendChild(bookDiv);
+document.body.appendChild(commentSection)
     });
     return data;
   } catch (error) {
