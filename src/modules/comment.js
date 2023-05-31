@@ -1,3 +1,4 @@
+import x from "./assets/x.png"
 const commentPop = async(id) => {
     try {
     const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json');
@@ -19,11 +20,17 @@ console.log(data.entries)
       const bookDiv = document.createElement('div');
       bookDiv.className = 'book-div';
       const firstCover = covers[0];
+      const images = document.createElement('div');
+      images.className = "images"
       const bookCover = document.createElement('img');
+      const close = document.createElement('img');
+      close.className = "close"
       bookCover.className = 'book-cover';
       bookCover.src = `https://covers.openlibrary.org/b/id/${firstCover}.jpg`;
-
-      bookDiv.appendChild(bookCover);
+      close.src = `${x}`
+      images.appendChild(bookCover)
+      images.appendChild(close)
+    bookDiv.appendChild(images)
       const detail = document.createElement("div")
       detail.className = "detail"
       const left = document.createElement("div")
@@ -83,6 +90,10 @@ commentContainer.appendChild(FormContainer)
 bookDiv.appendChild(commentContainer)
 commentSection.appendChild(bookDiv);
 document.body.appendChild(commentSection)
+
+close.addEventListener("click", ()=>{
+    commentSection.style.display = "none"
+})
     });
     return data;
   } catch (error) {
