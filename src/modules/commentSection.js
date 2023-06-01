@@ -1,5 +1,6 @@
 
 
+
 import x from './assets/x.png';
 import Comment from './comment.js';
 const gameId = "M37j4coTPdIjl1ZzHvRD"
@@ -82,7 +83,23 @@ console.log(data)
       form.appendChild(nameInput);
       form.appendChild(textInput);
       form.appendChild(formBtn);
+      
+
+      const commentList = document.createElement("ul")
+      const getComments = async()=>{
+        const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments?item_id=${id}`)
+        const resdata = await res.json()
+        console.log(resdata)
+       if(resdata.length > 0){ resdata.forEach((item)=>{
+          const listItem = document.createElement("li")
+          listItem.textContent = `${item.creation_date} ${item.username} ${item.comment}`
+          commentList.appendChild(listItem)
+        }) }
+      }
+   getComments()
+
       commentContainer.appendChild(commentHeading);
+      commentContainer.appendChild(commentList)
 
       FormContainer.appendChild(form);
       commentContainer.appendChild(FormContainer);
@@ -113,12 +130,16 @@ console.log(data)
             },
             body: JSON.stringify(userComment),
           };
-     
-          await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options)
-            .then((response) => console.log(response.json()));
+     try{
+         const res =  await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options)
+            const posted = await  res.json()
+            console.log(posted)
+          } catch (error) {
+            return error;
+          }
         });
       
-
+    
 
 
 
