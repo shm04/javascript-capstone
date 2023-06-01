@@ -1,7 +1,7 @@
 import x from './assets/x.png';
 import Comment from './comment.js';
 
-const gameId = 'M37j4coTPdIjl1ZzHvRD';
+const gameId = 'WCJ5pdYazcyAYcyM3y6Z';
 const commentPop = async (id) => {
   try {
     const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json?limit=21');
@@ -88,6 +88,7 @@ const commentPop = async (id) => {
           resdata.forEach((item) => {
             const listItem = document.createElement('li');
             listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`;
+
             commentList.appendChild(listItem);
           });
         }
@@ -113,12 +114,14 @@ const commentPop = async (id) => {
         blur.classList.remove('blur');
       });
 
-      formBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        const userComment = new Comment(entry.key, nameInput.value.trim(), textInput.value.trim());
+      const reload = () => {
+        while (commentList.firstChild) {
+          commentList.removeChild(commentList.firstChild);
+        }
+      };
 
-        form.reset();
-        getComments();
+      const postData = async () => {
+        const userComment = new Comment(entry.key, nameInput.value.trim(), textInput.value.trim());
         const options = {
           method: 'POST',
           headers: {
@@ -133,7 +136,17 @@ const commentPop = async (id) => {
         } catch (error) {
           return error;
         }
+      };
+
+      formBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        postData();
+        reload();
+        getComments();
+        form.reset()
       });
+
     });
     return data;
   } catch (error) {
