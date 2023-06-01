@@ -31,13 +31,20 @@ const displayBook = async () => {
       bookTitle.textContent = title;
 
       bookDiv.appendChild(bookTitle);
-      mainSection.appendChild(bookDiv);
+
+      const bookLikes = document.createElement('p');
+      bookLikes.className = 'book-title';
+      bookLikes.textContent = 'Likes:0';
+
+      bookDiv.appendChild(bookLikes);
 
       const commentBtn = document.createElement('button');
       commentBtn.className = 'comment-btn';
       commentBtn.textContent = 'Comments';
 
       bookDiv.appendChild(commentBtn);
+      mainSection.appendChild(bookDiv);
+
       commentBtn.addEventListener('click', () => {
         commentPop(key);
       });
