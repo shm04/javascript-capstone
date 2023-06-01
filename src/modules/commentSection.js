@@ -144,9 +144,8 @@ const commentPop = async (id) => {
         postData();
         reload();
         getComments();
-        form.reset()
+        form.reset();
       });
-
     });
     return data;
   } catch (error) {
