@@ -13,8 +13,8 @@ console.log(data)
     commentSection.className = 'comment';
 
     data.entries.forEach((entry) => {
-      // const { title, covers, key, subjects, created, last_modified, latest_revision} = entry;
-      const { title, covers, key } = entry;
+      const { title, covers, key, created, last_modified, revision} = entry;
+  
 
       if (key !== id) {
         return;
@@ -44,18 +44,21 @@ console.log(data)
       const subject = document.createElement('p');
       const create = document.createElement('p');
       const modified = document.createElement('p');
-      const revision = document.createElement('p');
+      const revisionP = document.createElement('p');
       bookTitle.className = 'book-title';
       bookTitle.textContent = title;
+     
       subject.textContent = `Subject: ${title}`;
-      create.textContent = `Created: ${title}`;
-      modified.textContent = `Modified: ${title}`;
-      revision.textContent = `Revision: ${title}`;
+      create.textContent = `Created: ${created.value}`;
+      modified.textContent = `Modified: ${last_modified.value}`;
+      revisionP.textContent = `Revision: ${revision}`;
       bookDiv.appendChild(bookTitle);
+      left.appendChild(create);
       left.appendChild(subject);
-      left.appendChild(revision);
-      right.appendChild(create);
       right.appendChild(modified);
+      right.appendChild(revisionP);
+      
+     
       detail.appendChild(left);
       detail.appendChild(right);
       bookDiv.appendChild(detail);
