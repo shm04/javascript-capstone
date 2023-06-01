@@ -80,20 +80,6 @@ const commentPop = async (id) => {
       form.appendChild(formBtn);
 
       const commentList = document.createElement('ul');
-      const getComments = async () => {
-        const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments?item_id=${id}`);
-        const resdata = await res.json();
-
-        if (resdata.length > 0) {
-          resdata.forEach((item) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`;
-
-            commentList.appendChild(listItem);
-          });
-        }
-      };
-      getComments();
 
       commentContainer.appendChild(commentHeading);
       commentContainer.appendChild(commentList);
@@ -114,11 +100,31 @@ const commentPop = async (id) => {
         blur.classList.remove('blur');
       });
 
-      const reload = () => {
-        while (commentList.firstChild) {
-          commentList.removeChild(commentList.firstChild);
+      // const reload = () => {
+      //   while (commentList.firstChild) {
+      //     commentList.removeChild(commentList.firstChild);
+      //   }
+      // };
+
+      const getComments = async () => {
+        try {
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments?item_id=${id}`);
+          const resdata = await res.json();
+
+          commentList.innerHTML = ''; // Clear the existing comments before adding new ones
+
+          if (resdata.length > 0) {
+            resdata.forEach((item) => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`;
+              commentList.appendChild(listItem);
+            });
+          }
+        } catch (error) {
+          return error;
         }
       };
+      getComments();
 
       const postData = async () => {
         const userComment = new Comment(entry.key, nameInput.value.trim(), textInput.value.trim());
@@ -132,17 +138,22 @@ const commentPop = async (id) => {
         try {
           const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options);
           const posted = await res.json();
+
+          const listItem = document.createElement('li');
+          listItem.textContent = `${posted.creation_date} ${posted.username}: ${posted.comment}`;
+          commentList.appendChild(listItem);
+
+          getComments();
+
           return posted;
         } catch (error) {
           return error;
         }
       };
 
-      formBtn.addEventListener('click', (e) => {
+      formBtn.addEventListener('click', async (e) => {
         e.preventDefault();
-
-        postData();
-        reload();
+        await postData();
         getComments();
         form.reset();
       });
