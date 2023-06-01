@@ -1,10 +1,13 @@
-import x from './assets/x.png';
 
+
+import x from './assets/x.png';
+import Comment from './comment.js';
+const gameId = "M37j4coTPdIjl1ZzHvRD"
 const commentPop = async (id) => {
   try {
-    const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json');
+    const response = await fetch(`https://openlibrary.org/authors/OL23919A/works.json?limit=21`);
     const data = await response.json();
-
+console.log(data)
     const commentSection = document.createElement('div');
     commentSection.className = 'comment';
 
@@ -95,6 +98,30 @@ const commentPop = async (id) => {
         commentSection.style.display = 'none';
         blur.classList.remove('blur');
       });
+
+
+   
+       formBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const userComment = new Comment( key, nameInput.value.trim(),textInput.value.trim());
+          console.log(userComment)
+          form.reset();
+          const options = {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: JSON.stringify(userComment),
+          };
+     
+          await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options)
+            .then((response) => console.log(response.json()));
+        });
+      
+
+
+
+
     });
     return data;
   } catch (error) {
