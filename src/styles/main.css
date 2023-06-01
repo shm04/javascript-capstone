@@ -67,44 +67,51 @@ footer p {
   align-items: center;
   padding-left: 25px;
 }
-.comment .book-div{
+
+.comment .book-div {
   max-width: 90%;
- 
 }
-.detail{
+
+.detail {
   display: flex;
   gap: 4rem;
   margin: 2rem 0;
 }
-.comment .book-cover{
+
+.comment .book-cover {
   width: 60%;
   height: 60vh;
- 
 }
-.left p, .right p{
+
+.left p,
+.right p {
   margin-top: 1rem;
 }
-form{
+
+form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-input{
+
+input {
   height: 1rem;
 }
-.close{
+
+.close {
   float: right;
   width: 2rem;
   height: auto;
 }
-.images{
+
+.images {
   display: flex;
   align-items: start;
   max-width: 100%;
   justify-content: center;
 }
-.comment{
 
+.comment {
   left: 5rem;
   right: 5rem;
   top: 1rem;
@@ -122,7 +129,7 @@ input{
   overflow-x: hidden;
 }
 
-.blur{
+.blur {
   position: fixed;
   top: 0;
   bottom: 0;

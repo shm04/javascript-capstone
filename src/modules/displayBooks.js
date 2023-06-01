@@ -1,4 +1,5 @@
-import commentPop from "./comment.js";
+import commentPop from './comment.js';
+
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
 
 const displayBook = async () => {
@@ -37,10 +38,9 @@ const displayBook = async () => {
       commentBtn.textContent = 'Comments';
 
       bookDiv.appendChild(commentBtn);
-      commentBtn.addEventListener("click", () =>{
-        console.log(key)
-        commentPop(key)
-      })
+      commentBtn.addEventListener('click', () => {
+        commentPop(key);
+      });
     });
     return data;
   } catch (error) {
