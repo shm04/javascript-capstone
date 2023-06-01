@@ -118,6 +118,7 @@ const commentPop = async (id) => {
         const userComment = new Comment(entry.key, nameInput.value.trim(), textInput.value.trim());
 
         form.reset();
+        getComments()
         const options = {
           method: 'POST',
           headers: {
@@ -129,9 +130,11 @@ const commentPop = async (id) => {
           const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options);
           const posted = await res.json();
           return posted;
+          
         } catch (error) {
           return error;
         }
+      
       });
     });
     return data;
