@@ -1,7 +1,7 @@
 import x from './assets/x.png';
 import Comment from './comment.js';
 
-const gameId = 'WCJ5pdYazcyAYcyM3y6Z';
+const bookId = 'WCJ5pdYazcyAYcyM3y6Z';
 const commentPop = async (id) => {
   try {
     const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json?limit=21');
@@ -100,18 +100,12 @@ const commentPop = async (id) => {
         blur.classList.remove('blur');
       });
 
-      // const reload = () => {
-      //   while (commentList.firstChild) {
-      //     commentList.removeChild(commentList.firstChild);
-      //   }
-      // };
-
       const getComments = async () => {
         try {
-          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments?item_id=${id}`);
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${bookId}/comments?item_id=${id}`);
           const resdata = await res.json();
 
-          commentList.innerHTML = ''; // Clear the existing comments before adding new ones
+          commentList.innerHTML = '';
 
           if (resdata.length > 0) {
             resdata.forEach((item) => {
@@ -120,6 +114,7 @@ const commentPop = async (id) => {
               commentList.appendChild(listItem);
             });
           }
+          return resdata;
         } catch (error) {
           return error;
         }
@@ -136,7 +131,7 @@ const commentPop = async (id) => {
           body: JSON.stringify(userComment),
         };
         try {
-          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${gameId}/comments/`, options);
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${bookId}/comments/`, options);
           const posted = await res.json();
 
           const listItem = document.createElement('li');

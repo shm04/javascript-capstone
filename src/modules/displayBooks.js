@@ -47,5 +47,4 @@ const displayBook = async () => {
     return error;
   }
 };
-// const bookId = key.replace("/works/", '')
 export default displayBook;
