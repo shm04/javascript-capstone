@@ -3,7 +3,13 @@
   margin: 0;
   padding: 0;
 }
-
+button{
+  padding: 0.5vw 1vw;
+  border-radius: 4px;
+  box-shadow: rgba(119, 117, 117, 0.66) 0 1px 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
 body {
   margin: auto;
   padding: 0;
@@ -70,17 +76,20 @@ footer p {
 
 .comment .book-div {
   max-width: 90%;
+
 }
 
 .detail {
   display: flex;
   gap: 4rem;
   margin: 2rem 0;
+  width: 50vw;
 }
 
 .comment .book-cover {
-  width: 100%;
+  width: 50vw;
   height: 60vh;
+  margin-top: 2rem;
 }
 
 .left p,
@@ -88,45 +97,56 @@ footer p {
   margin-top: 1rem;
 }
 
+
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 25vw;
+  margin: 2rem 0;
 }
 
-input {
-  height: 2rem;
+input, textarea {
+  padding: 0.5rem;
 }
+form button{
+  width: fit-content;
+  align-self: end;
+}
+
+
 
 .close {
-  float: right;
-  width: 2rem;
+  align-self: end;
+  margin-top: 0.5rem;
+  width: 3rem;
   height: auto;
+  position: fixed;
+  
 }
 
-.images {
-  display: flex;
-  align-items: start;
-  max-width: 100%;
-  justify-content: center;
-}
+
 
 .comment {
+  display: flex;
+  flex-direction: column;
   left: 5rem;
   right: 5rem;
   top: 1rem;
   bottom: 1rem;
-  padding: 2rem;
+  padding-left: 3rem;
+  
   position: fixed;
   transition: 200ms ease-in-out;
   border: 1px solid #ebecf0;
   border-radius: 10px;
   z-index: 50;
   background-color: white;
-  width: 70vw;
+  width: 60vw;
   height: auto;
   overflow-y: scroll;
   overflow-x: hidden;
+
 }
 
 .blur {
@@ -138,3 +158,22 @@ input {
   transition: 200ms ease-in-out;
   background-color: rgba(0, 0, 0, 0.5);
 }
+ul{
+  border: solid 1px rgb(215, 212, 212);
+  width: 50vw;
+  margin: 2vw 0;
+  overflow-y: auto;
+  border-radius: 1vw;
+  max-height: 30vh;
+  padding: 1rem;
+}
+li{
+  list-style: none;
+  padding: 0.3rem;
+}
+
+li:nth-child(even) {
+  background-color: rgb(239, 235, 235);
+}
+
+

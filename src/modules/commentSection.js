@@ -23,17 +23,16 @@ console.log(data)
       const bookDiv = document.createElement('div');
       bookDiv.className = 'book-div';
       const firstCover = covers[0];
-      const images = document.createElement('div');
-      images.className = 'images';
+     
+     
       const bookCover = document.createElement('img');
       const close = document.createElement('img');
       close.className = 'close';
       bookCover.className = 'book-cover';
       bookCover.src = `https://covers.openlibrary.org/b/id/${firstCover}.jpg`;
       close.src = `${x}`;
-      images.appendChild(bookCover);
-      images.appendChild(close);
-      bookDiv.appendChild(images);
+      
+      bookDiv.appendChild(bookCover);
       const detail = document.createElement('div');
       detail.className = 'detail';
       const left = document.createElement('div');
@@ -62,19 +61,19 @@ console.log(data)
       bookDiv.appendChild(detail);
 
       const commentContainer = document.createElement('div');
+      commentContainer.className = "display"
       const FormContainer = document.createElement('div');
       const commentHeading = document.createElement('h2');
       commentHeading.textContent = 'Comments (2)';
       const formHeading = document.createElement('h2');
-      formHeading.textContent = 'Add comment';
+      formHeading.textContent = 'Add a comment';
       const form = document.createElement('form');
       const nameInput = document.createElement('input');
       nameInput.type = 'text';
       nameInput.name = 'name';
       nameInput.placeholder = 'Your name';
-      const textInput = document.createElement('input');
-      textInput.type = 'textarea';
-      textInput.name = 'texte';
+      const textInput = document.createElement('textarea');
+      textInput.rows = 5;
       textInput.placeholder = 'Your Insights';
       const formBtn = document.createElement('button');
       formBtn.type = 'submit';
@@ -92,7 +91,7 @@ console.log(data)
         console.log(resdata)
        if(resdata.length > 0){ resdata.forEach((item)=>{
           const listItem = document.createElement("li")
-          listItem.textContent = `${item.creation_date} ${item.username} ${item.comment}`
+          listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`
           commentList.appendChild(listItem)
         }) }
       }
@@ -105,6 +104,7 @@ console.log(data)
       commentContainer.appendChild(FormContainer);
 
       bookDiv.appendChild(commentContainer);
+      commentSection.appendChild(close)
       commentSection.appendChild(bookDiv);
       const blur = document.createElement('div');
       blur.className = 'blur';
