@@ -1,4 +1,4 @@
-import commentPop from './comment.js';
+import commentPop from './commentSection.js';
 
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
 
