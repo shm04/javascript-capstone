@@ -3,7 +3,6 @@ import getLikes from './getLikes.js';
 import createLike from './createLikes.js';
 import updateLikes from './updateLikes.js';
 
-
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=18';
 
 const displayBook = async () => {
@@ -67,7 +66,7 @@ const displayBook = async () => {
         await updateLikes(key);
         updateLike();
       });
-     
+
       const commentBtn = document.createElement('button');
       commentBtn.className = 'comment-btn';
       commentBtn.textContent = 'Comments';
@@ -86,6 +85,5 @@ const displayBook = async () => {
   } catch (error) {
     return error;
   }
-  
 };
 export default displayBook;

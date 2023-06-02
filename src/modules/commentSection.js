@@ -56,7 +56,7 @@ const commentPop = async (id) => {
       detail.appendChild(left);
       detail.appendChild(right);
       bookDiv.appendChild(detail);
-
+      const commentList = document.createElement('ul');
       const commentContainer = document.createElement('div');
       commentContainer.className = 'display';
       const FormContainer = document.createElement('div');
@@ -67,8 +67,8 @@ const commentPop = async (id) => {
           const resdata = await res.json();
 
           commentList.innerHTML = '';
-          let count = await commentCount(resdata)
-          
+          const count = await commentCount(resdata);
+
           commentHeading.textContent = `Comments (${count})`;
           if (resdata.length > 0) {
             resdata.forEach((item) => {
@@ -82,8 +82,7 @@ const commentPop = async (id) => {
           return error;
         }
       };
-      
-      
+
       const formHeading = document.createElement('h2');
       formHeading.textContent = 'Add a comment';
       const form = document.createElement('form');
@@ -101,8 +100,6 @@ const commentPop = async (id) => {
       form.appendChild(nameInput);
       form.appendChild(textInput);
       form.appendChild(formBtn);
-
-      const commentList = document.createElement('ul');
 
       commentContainer.appendChild(commentHeading);
       commentContainer.appendChild(commentList);
@@ -123,7 +120,6 @@ const commentPop = async (id) => {
         blur.classList.remove('blur');
       });
 
-     
       getComments();
 
       const postData = async () => {

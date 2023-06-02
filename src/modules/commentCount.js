@@ -1,7 +1,4 @@
-
-
-const commentCount = async (comments) => {  
-
+const commentCount = async (comments) => {
   let commentCount;
   if (comments.length > 0) {
     commentCount = comments.length;
