@@ -47,7 +47,8 @@ const displayBook = async () => {
 
       const likeBtn = document.createElement('button');
       likeBtn.className = 'like-btn';
-      likeBtn.innerHTML = `<img src="${heart}" alt="heart">`;
+      likeBtn.innerHTML = `<span class="material-symbols-outlined">
+      favorite</span>`;
       const bookLikesElement = document.createElement('p');
       likeBtn.addEventListener('click', async () => {
         updateLikes();
