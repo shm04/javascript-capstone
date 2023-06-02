@@ -2,6 +2,7 @@ import commentPop from './commentSection.js';
 import getLikes from './getLikes.js';
 import createLike from './createLikes.js';
 import heart from './assets/heart.png';
+import updateLikes from './updateLikes.js';
 
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
 
@@ -12,6 +13,8 @@ const displayBook = async () => {
 
     const mainSection = document.querySelector('.main-section');
 
+    let bookCount = 0;
+
     data.entries.forEach(async (entry) => {
       const { title, covers, key } = entry;
 
@@ -19,6 +22,7 @@ const displayBook = async () => {
         return;
       }
 
+      bookCount += 1;
       createLike(key);
 
       const bookDiv = document.createElement('div');
@@ -46,7 +50,8 @@ const displayBook = async () => {
       likeBtn.innerHTML = `<img src="${heart}" alt="heart">`;
       const bookLikesElement = document.createElement('p');
       likeBtn.addEventListener('click', async () => {
-        // need to write a function that once i click the likeBtn the count increase in the object(API) and in the screen
+        updateLikes();
+        await getLikes();
       });
       bookDiv.appendChild(likeBtn);
 
@@ -66,6 +71,10 @@ const displayBook = async () => {
         commentPop(key);
       });
     });
+
+    const bookCounter = document.querySelector('.count-books');
+    bookCounter.innerHTML = `Books(${bookCount})`;
+
     return data;
   } catch (error) {
     return error;
