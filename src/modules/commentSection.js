@@ -1,7 +1,7 @@
 import x from './assets/x.png';
 import Comment from './comment.js';
+import { appId } from './urlAndId.js';
 
-const bookId = 'xsMgySSOLdWVdMRKDgjB';
 const commentPop = async (id) => {
   try {
     const response = await fetch('https://openlibrary.org/authors/OL23919A/works.json?limit=21');
@@ -102,7 +102,7 @@ const commentPop = async (id) => {
 
       const getComments = async () => {
         try {
-          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${bookId}/comments?item_id=${id}`);
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments?item_id=${id}`);
           const resdata = await res.json();
 
           commentList.innerHTML = '';
@@ -131,7 +131,7 @@ const commentPop = async (id) => {
           body: JSON.stringify(userComment),
         };
         try {
-          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${bookId}/comments/`, options);
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments/`, options);
           const posted = await res.json();
 
           const listItem = document.createElement('li');

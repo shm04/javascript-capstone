@@ -1,4 +1,7 @@
 import commentPop from './commentSection.js';
+import getLikes from './getLikes.js';
+import createLike from './createLikes.js';
+import heart from './assets/heart.png';
 
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
 
@@ -9,12 +12,14 @@ const displayBook = async () => {
 
     const mainSection = document.querySelector('.main-section');
 
-    data.entries.forEach((entry) => {
+    data.entries.forEach(async (entry) => {
       const { title, covers, key } = entry;
 
       if (!covers || covers.length === 0) {
         return;
       }
+
+      createLike(key);
 
       const bookDiv = document.createElement('div');
       bookDiv.className = 'book-div';
@@ -32,11 +37,23 @@ const displayBook = async () => {
 
       bookDiv.appendChild(bookTitle);
 
-      const bookLikes = document.createElement('p');
-      bookLikes.className = 'book-title';
-      bookLikes.textContent = 'Likes:0';
+      const likesData = await getLikes();
+      const bookLikes = likesData.find((item) => item.item_id === key);
+      const likes = bookLikes ? bookLikes.likes : 0;
 
-      bookDiv.appendChild(bookLikes);
+      const likeBtn = document.createElement('button');
+      likeBtn.className = 'like-btn';
+      likeBtn.innerHTML = `<img src="${heart}" alt="heart">`;
+      const bookLikesElement = document.createElement('p');
+      likeBtn.addEventListener('click', async () => {
+        // need to write a function that once i click the likeBtn the count increase in the object(API) and in the screen
+      });
+      bookDiv.appendChild(likeBtn);
+
+      bookLikesElement.className = 'book-likes';
+      bookLikesElement.textContent = `Likes: ${likes}`;
+
+      bookDiv.appendChild(bookLikesElement);
 
       const commentBtn = document.createElement('button');
       commentBtn.className = 'comment-btn';
