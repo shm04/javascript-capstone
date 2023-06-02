@@ -1,7 +1,6 @@
 import commentPop from './commentSection.js';
 import getLikes from './getLikes.js';
 import createLike from './createLikes.js';
-import heart from './assets/heart.png';
 import updateLikes from './updateLikes.js';
 
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
@@ -42,6 +41,7 @@ const displayBook = async () => {
       bookDiv.appendChild(bookTitle);
 
       const likesData = await getLikes();
+      //console.log(likesData)
       const bookLikes = likesData.find((item) => item.item_id === key);
       const likes = bookLikes ? bookLikes.likes : 0;
 
@@ -51,7 +51,8 @@ const displayBook = async () => {
       favorite</span>`;
       const bookLikesElement = document.createElement('p');
       likeBtn.addEventListener('click', async () => {
-        updateLikes();
+
+        updateLikes(key);
         await getLikes();
       });
       bookDiv.appendChild(likeBtn);
