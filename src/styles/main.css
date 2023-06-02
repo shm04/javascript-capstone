@@ -89,7 +89,7 @@ footer p {
 
 .comment .book-cover {
   width: 50vw;
-  height: 70vh;
+  height: 55vw;
   margin-top: 2rem;
   border-radius: 0.5rem;
 }
@@ -189,14 +189,6 @@ li:nth-child(even) {
   width: auto;
   height: 2rem;
 }
-
-/* .material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48,
-} */
 
 span:hover {
   color: red;
