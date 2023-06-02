@@ -3,7 +3,7 @@ import getLikes from './getLikes.js';
 import createLike from './createLikes.js';
 import updateLikes from './updateLikes.js';
 
-const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=21';
+const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=18';
 
 const displayBook = async () => {
   try {
@@ -40,36 +40,32 @@ const displayBook = async () => {
 
       bookDiv.appendChild(bookTitle);
 
-      const updateLike = async()=>{
-        const likesData = await getLikes();
-        //console.log(likesData)
-        const bookLikes = likesData.find((item) => item.item_id === key);
-        const likes = bookLikes ? bookLikes.likes : 0;
-        bookLikesElement.textContent = `Likes: ${likes}`;
-      }
-
       const likeBtn = document.createElement('button');
       likeBtn.className = 'like-btn';
       likeBtn.innerHTML = `<span class="material-symbols-outlined">
       favorite</span>`;
       const bookLikesElement = document.createElement('p');
 
- 
+      const updateLike = async () => {
+        const likesData = await getLikes();
+        // console.log(likesData)
+        const bookLikes = likesData.find((item) => item.item_id === key);
+        const likes = bookLikes ? bookLikes.likes : 0;
+        bookLikesElement.textContent = `Likes: ${likes}`;
+      };
 
       bookDiv.appendChild(likeBtn);
 
       bookLikesElement.className = 'book-likes';
-      
-      updateLike()
-     
+
+      updateLike();
 
       bookDiv.appendChild(bookLikesElement);
 
-      likeBtn.addEventListener('click', async() => {
-
+      likeBtn.addEventListener('click', async () => {
         await updateLikes(key);
-        updateLike()
-       });
+        updateLike();
+      });
 
       const commentBtn = document.createElement('button');
       commentBtn.className = 'comment-btn';

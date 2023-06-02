@@ -181,7 +181,7 @@ li:nth-child(even) {
   background-color: rgb(239, 235, 235);
 }
 
-.like-btn{
+.like-btn {
   border: none;
   border-radius: 50%;
   box-shadow: none;
@@ -190,15 +190,14 @@ li:nth-child(even) {
   height: 2rem;
 }
 
-
-.material-symbols-outlined {
+/* .material-symbols-outlined {
   font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 48
-}
-span:hover{
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48,
+} */
+
+span:hover {
   color: red;
 }
-

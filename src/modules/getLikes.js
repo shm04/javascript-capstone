@@ -6,7 +6,7 @@ const getLikes = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    return data
+    return data;
   } catch (error) {
     return error;
   }
