@@ -1,5 +1,4 @@
 import { apiUrl, appId } from './urlAndId.js';
-
 const updateLikes = async (id) => {
   const url = `${apiUrl}/apps/${appId}/likes/`;
 

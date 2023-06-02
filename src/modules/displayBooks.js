@@ -40,27 +40,36 @@ const displayBook = async () => {
 
       bookDiv.appendChild(bookTitle);
 
-      const likesData = await getLikes();
-      //console.log(likesData)
-      const bookLikes = likesData.find((item) => item.item_id === key);
-      const likes = bookLikes ? bookLikes.likes : 0;
+      const updateLike = async()=>{
+        const likesData = await getLikes();
+        //console.log(likesData)
+        const bookLikes = likesData.find((item) => item.item_id === key);
+        const likes = bookLikes ? bookLikes.likes : 0;
+        bookLikesElement.textContent = `Likes: ${likes}`;
+      }
 
       const likeBtn = document.createElement('button');
       likeBtn.className = 'like-btn';
       likeBtn.innerHTML = `<span class="material-symbols-outlined">
       favorite</span>`;
       const bookLikesElement = document.createElement('p');
-      likeBtn.addEventListener('click', async () => {
 
-        updateLikes(key);
-        await getLikes();
-      });
+ 
+
       bookDiv.appendChild(likeBtn);
 
       bookLikesElement.className = 'book-likes';
-      bookLikesElement.textContent = `Likes: ${likes}`;
+      
+      updateLike()
+     
 
       bookDiv.appendChild(bookLikesElement);
+
+      likeBtn.addEventListener('click', async() => {
+
+        await updateLikes(key);
+        updateLike()
+       });
 
       const commentBtn = document.createElement('button');
       commentBtn.className = 'comment-btn';
