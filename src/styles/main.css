@@ -180,3 +180,24 @@ li {
 li:nth-child(even) {
   background-color: rgb(239, 235, 235);
 }
+
+.like-btn {
+  border: none;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: 0;
+  width: auto;
+  height: 2rem;
+}
+
+/* .material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48,
+} */
+
+span:hover {
+  color: red;
+}
