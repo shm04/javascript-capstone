@@ -1,6 +1,7 @@
 import x from './assets/x.png';
 import Comment from './comment.js';
 import { appId } from './urlAndId.js';
+import commentCount from './commentCount.js';
 
 const commentPop = async (id) => {
   try {
@@ -60,7 +61,29 @@ const commentPop = async (id) => {
       commentContainer.className = 'display';
       const FormContainer = document.createElement('div');
       const commentHeading = document.createElement('h2');
-      commentHeading.textContent = 'Comments (2)';
+      const getComments = async () => {
+        try {
+          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments?item_id=${id}`);
+          const resdata = await res.json();
+
+          commentList.innerHTML = '';
+          let count = await commentCount(resdata)
+          
+          commentHeading.textContent = `Comments (${count})`;
+          if (resdata.length > 0) {
+            resdata.forEach((item) => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`;
+              commentList.appendChild(listItem);
+            });
+          }
+          return resdata;
+        } catch (error) {
+          return error;
+        }
+      };
+      
+      
       const formHeading = document.createElement('h2');
       formHeading.textContent = 'Add a comment';
       const form = document.createElement('form');
@@ -100,25 +123,7 @@ const commentPop = async (id) => {
         blur.classList.remove('blur');
       });
 
-      const getComments = async () => {
-        try {
-          const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments?item_id=${id}`);
-          const resdata = await res.json();
-
-          commentList.innerHTML = '';
-
-          if (resdata.length > 0) {
-            resdata.forEach((item) => {
-              const listItem = document.createElement('li');
-              listItem.textContent = `${item.creation_date} ${item.username}: ${item.comment}`;
-              commentList.appendChild(listItem);
-            });
-          }
-          return resdata;
-        } catch (error) {
-          return error;
-        }
-      };
+     
       getComments();
 
       const postData = async () => {
