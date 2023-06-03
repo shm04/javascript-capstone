@@ -1,12 +1,6 @@
-import changeColor from "./function.js";
-import './styles/main.css'
+import './styles/main.css';
+import displayBook from './modules/displayBooks.js';
 
-const title = document.querySelector('.main-title');
-
-title.innerHTML = 'Hi webpack!';
-
-const button = document.querySelector('.change-color');
-
-button.addEventListener('click', () => {
-    changeColor();
+window.addEventListener('load', () => {
+  displayBook();
 });

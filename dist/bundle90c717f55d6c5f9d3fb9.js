@@ -2,21 +2,22 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/function.js":
-/*!*************************!*\
-  !*** ./src/function.js ***!
-  \*************************/
+/***/ "./src/modules/header-footer.js":
+/*!**************************************!*\
+  !*** ./src/modules/header-footer.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   footer: () => (/* binding */ footer),
+/* harmony export */   header: () => (/* binding */ header)
 /* harmony export */ });
-var changeColor = function changeColor() {
-  var title = document.querySelector('.main-title');
-  title.style.backgroundColor = 'red';
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (changeColor);
+/* harmony import */ var _assets_lib_logo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/lib-logo.png */ "./src/modules/assets/lib-logo.png");
+
+var header = "\n<img class=\"logo\" src=\"".concat(_assets_lib_logo_png__WEBPACK_IMPORTED_MODULE_0__["default"], "\" alt=\"Library logo\">\n<h3 id=\"count-books\">Books(6)</h3>\n<h3>Fiction</h3>\n<h3>Educative</h3> \n");
+var footer = "\n<p>Created by Microverse students: Sebastian and Sylvester under CC license</p>\n<div class=\"footer-grey\" >\n</div>\n";
+
 
 /***/ }),
 
@@ -39,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\r\n    background-color: bisque;\r\n}", "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":"AAAA;IACI,wBAAwB;AAC5B","sourcesContent":["body {\r\n    background-color: bisque;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  margin: auto;\r\n  padding: 0;\r\n}\r\n\r\nheader {\r\n  margin: 4rem;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 5rem;\r\n}\r\n\r\n#count-books {\r\n  text-decoration: underline;\r\n}\r\n\r\n.logo {\r\n  height: 4rem;\r\n  border-radius: 50%;\r\n}\r\n\r\nfooter {\r\n  position: absolute;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter p {\r\n  height: 5rem;\r\n  border: solid 2px;\r\n  padding: 2.5rem;\r\n}\r\n\r\n.footer-grey {\r\n  height: 2rem;\r\n  width: 100%;\r\n  background-color: rgb(145, 140, 140);\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/styles/main.css"],"names":[],"mappings":";AACA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,YAAY;EACZ,UAAU;AACZ;;AAEA;EACE,YAAY;EACZ,aAAa;EACb,mBAAmB;EACnB,SAAS;AACX;;AAEA;EACE,0BAA0B;AAC5B;;AAEA;EACE,YAAY;EACZ,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,SAAS;EACT,WAAW;AACb;;AAEA;EACE,YAAY;EACZ,iBAAiB;EACjB,eAAe;AACjB;;AAEA;EACE,YAAY;EACZ,WAAW;EACX,oCAAoC;AACtC","sourcesContent":["\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  margin: auto;\r\n  padding: 0;\r\n}\r\n\r\nheader {\r\n  margin: 4rem;\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 5rem;\r\n}\r\n\r\n#count-books {\r\n  text-decoration: underline;\r\n}\r\n\r\n.logo {\r\n  height: 4rem;\r\n  border-radius: 50%;\r\n}\r\n\r\nfooter {\r\n  position: absolute;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter p {\r\n  height: 5rem;\r\n  border: solid 2px;\r\n  padding: 2.5rem;\r\n}\r\n\r\n.footer-grey {\r\n  height: 2rem;\r\n  width: 100%;\r\n  background-color: rgb(145, 140, 140);\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -162,6 +163,20 @@ module.exports = function (item) {
   }
   return [content].join("\n");
 };
+
+/***/ }),
+
+/***/ "./src/modules/assets/lib-logo.png":
+/*!*****************************************!*\
+  !*** ./src/modules/assets/lib-logo.png ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("assets/lib-logo.png");
 
 /***/ }),
 
@@ -566,18 +581,18 @@ var __webpack_exports__ = {};
   !*** ./src/index.js ***!
   \**********************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _function_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./function.js */ "./src/function.js");
-/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
+/* harmony import */ var _styles_main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/main.css */ "./src/styles/main.css");
+/* harmony import */ var _modules_header_footer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/header-footer.js */ "./src/modules/header-footer.js");
 
 
-var title = document.querySelector('.main-title');
-title.innerHTML = 'Hi webpack!';
-var button = document.querySelector('.change-color');
-button.addEventListener('click', function () {
-  (0,_function_js__WEBPACK_IMPORTED_MODULE_0__["default"])();
-});
+var headerSection = document.createElement('header');
+var footerSection = document.createElement('footer');
+headerSection.innerHTML = _modules_header_footer_js__WEBPACK_IMPORTED_MODULE_1__.header;
+footerSection.innerHTML = _modules_header_footer_js__WEBPACK_IMPORTED_MODULE_1__.footer;
+document.body.appendChild(headerSection);
+document.body.appendChild(footerSection);
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle9b03624fece2a6974765.js.map
+//# sourceMappingURL=bundle90c717f55d6c5f9d3fb9.js.map
