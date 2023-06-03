@@ -22,6 +22,8 @@
 # 📖 JavScript Capstone Project<a name="about-project"></a>
 
 This capstone project is a web page where you can find infromation about J.K Rowling books, you can like each book and leave a comment. 
+Here is a video presenting more of the project:
+https://www.loom.com/share/9166bc1950b74dc5931c9f3f683573b7
 
 ## 🛠 Built With <a name="built-with"></a>
 
