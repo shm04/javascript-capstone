@@ -2,6 +2,7 @@ import commentPop from './commentSection.js';
 import getLikes from './getLikes.js';
 import createLike from './createLikes.js';
 import updateLikes from './updateLikes.js';
+import booksCounter from './booksCounter.js';
 
 const apiUrl = 'https://openlibrary.org/authors/OL23919A/works.json?limit=18';
 
@@ -10,9 +11,9 @@ const displayBook = async () => {
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    const mainSection = document.querySelector('.main-section');
+    console.log(data);
 
-    let bookCount = 0;
+    const mainSection = document.querySelector('.main-section');
 
     data.entries.forEach(async (entry) => {
       const { title, covers, key } = entry;
@@ -21,7 +22,6 @@ const displayBook = async () => {
         return;
       }
 
-      bookCount += 1;
       createLike(key);
 
       const bookDiv = document.createElement('div');
@@ -48,7 +48,6 @@ const displayBook = async () => {
 
       const updateLike = async () => {
         const likesData = await getLikes();
-        // console.log(likesData)
         const bookLikes = likesData.find((item) => item.item_id === key);
         const likes = bookLikes ? bookLikes.likes : 0;
         bookLikesElement.textContent = `Likes: ${likes}`;
@@ -79,8 +78,10 @@ const displayBook = async () => {
       });
     });
 
+    const section = document.querySelector('.main-section');
+    const booksCount = booksCounter(section);
     const bookCounter = document.querySelector('.count-books');
-    bookCounter.innerHTML = `Books(${bookCount})`;
+    bookCounter.innerHTML = `Books(${booksCount})`;
     return data;
   } catch (error) {
     return error;
